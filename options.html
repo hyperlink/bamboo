@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Setup - Simple Bamboo Monitor</title>
+</head>
+<style type="text/css">
+	input:required {
+		border-style:solid;
+		border-width:2px;
+		padding: 4px 6px;
+	}
+	input:valid {
+		background-color: #adff2f;
+	}
+	input:invalid {
+		background-color: #f08080;
+	}
+</style>
+<body>
+<h1>Setup Simple Bamboo Monitor</h1>
+
+<label for=bambooHost>Bamboo Host:</label> <input type=url required id=bambooHost autofocus placeholder="http://MyBamboo" pattern="https?://.+">
+
+<button id="applyBtn">Apply</button>
+<script src="js/lib/jquery-1.9.1.min.js"></script>
+<script src="js/lib/chromeStorage.js"></script>
+<script src="js/options.js"></script>
+</body>
+</html>
