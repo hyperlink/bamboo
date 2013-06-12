@@ -33,7 +33,7 @@ function launchSetup() {
 function start() {
 	bambooApi.getCurrentUser().
 		then(requestStatus).
-		fail(function(){
+		fail(function handleStartFailure(){
 			setApiError.apply(this, arguments)
 			setTimeout(start, REFRESH_INTERVAL*1e3)
 		})

@@ -30,6 +30,6 @@ function getUrlObject(url) {
 	return {
 		domain: a.host,
 		protocol: a.protocol,
-		port: a.port || "80"
+		port: a.port || ((a.protocol == 'https:') ? "443" : "80")
 	}
 }
