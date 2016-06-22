@@ -59,7 +59,7 @@ function processResult (data) {
 
 	if (badBuilds.length) {
 		var message = buildBrokenDisplayMessage(badBuilds)
-		browserAction.setBroken().setTitle('Build is broken: ' + message)
+		browserAction.setBroken().setTitle('Build is broken:\n\n' + message)
 		desktopNotify(message)
 	} else {
 		browserAction.setGood(BUILD_IS_GOOD_MSG)
@@ -72,7 +72,7 @@ function buildBrokenDisplayMessage(badBuilds) {
 	badBuilds.forEach(function(build) {
 		message.push(build.projectName + " ⇨ " + build.planName)
 	})
-	return message.join(', ')
+	return message.join('\n')
 }
 
 function isBad(result) {
