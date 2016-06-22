@@ -14,7 +14,7 @@ chrome.storage.sync.get('bambooHost', function(item) {
 function setupBambooApi(bambooHost) {
 	if (bambooHost) {
 		bambooApi.options(getUrlObject(bambooHost)).context('rest/api/latest', function() {
-			bambooApi.connect('result?favourite=1&expand=results.result', {as: 'getFavoriteResults'})
+			bambooApi.connect('result?favourite=1&expand=results.result&max-result=50', {as: 'getFavoriteResults'})
 			bambooApi.connect('project?expand=projects.project.plans', {as: 'getAllProjects'})
 			bambooApi.connect('project/:project?expand=plans', {as: 'getPlansForProject'})
 			bambooApi.connect('currentUser')
