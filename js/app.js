@@ -80,11 +80,19 @@ function isBad(result) {
 }
 
 function desktopNotify(message) {
-	if ( webkitNotifications.checkPermission() === 0 && desktopNotify.lastMessage != message) {
-		var note = webkitNotifications.createNotification(
-			"images/BAMBOO.png", "Builds Status", message)
-		note.show()
-		window.setTimeout(function(){note.cancel()}, 1e4)
-		desktopNotify.lastMessage = message
-	}
+	if (desktopNotify.lastMessage == message) return
+
+	var id = 'bamboo-' + Math.random().toString(36).substr(2)
+
+	chrome.notifications.create(id, {
+		type: "basic",
+		title: "Builds Status",
+		message: message,
+		iconUrl: "images/BAMBOO.png"
+	})
+
+	window.setTimeout(function () {
+		chrome.notifications.clear(id)
+	}, 1e4)
+	desktopNotify.lastMessage = message
 }
